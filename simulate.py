@@ -11,12 +11,11 @@ p.setGravity(0, 0, -9.8)
 # add floor
 planedId = p.loadURDF("plane.urdf")
 
-# the robot body
+# the robot body data
 planedId = p.loadURDF("body.urdf")
 
 # world
 p.loadSDF("world.sdf")
-
 
 # simulated world
 for i in range(1000):
