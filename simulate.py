@@ -1,16 +1,19 @@
 import pybullet as p
 import time as t
+import pybullet_data
 
 physicsClient = p.connect(p.GUI)
+p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
-p.setGravity(0, 0, -9.8)
+# add floor
+planedId = p.loadURDF("plane.urdf")
 
-# pybullet read in the world called box.
+# read in the world called box.
 p.loadSDF("box.sdf")
 
 # simulated world
 for i in range(1000):
     p.stepSimulation()
-    t.sleep(1/60)
+    t.sleep(1 / 60)
 
 p.disconnect()
