@@ -24,20 +24,22 @@ p.loadSDF("world.sdf")
 pyrosim.Prepare_To_Simulate("body.urdf")
 
 # numpy vector
-backLegSensorValues = numpy.zeros(10000)
-
+backLegSensorValues = numpy.zeros(1000)
+# frontLegSensorValues = numpy.zeros(10000)
 
 # simulated world
 for i in range(1000):
     p.stepSimulation()
     # Adding a touch sensor to the back leg
-    backLegTouch = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
-    # print sensor values
-    print(backLegTouch)
+    backLegSensorValues = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
+    # Adding a touch sensor to the front leg
+    # frontLegTouch = pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
     t.sleep(1 / 60)
 
 p.disconnect()
 
 numpy.save(os.path.join('data', 'backLegSensorValues.npy'), backLegSensorValues)
+# numpy.save(os.path.join('data', 'frontLegSensorValues.npy'), frontLegSensorValues)
+
 print(backLegSensorValues)
 
