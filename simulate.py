@@ -24,6 +24,8 @@ pyrosim.Prepare_To_Simulate("body.urdf")
 for i in range(1000):
     p.stepSimulation()
     backLegTouch = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
+    # print sensor values
+    print(backLegTouch)
     t.sleep(1 / 60)
 
 p.disconnect()
