@@ -1,3 +1,4 @@
+import os.path
 import pybullet as p
 import time as t
 import pybullet_data
@@ -37,4 +38,6 @@ for i in range(1000):
 
 p.disconnect()
 
-# print(backLegSensorValues)
+numpy.save(os.path.join('data', 'backLegSensorValues.npy'), backLegSensorValues)
+print(backLegSensorValues)
+
