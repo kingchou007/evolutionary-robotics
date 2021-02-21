@@ -27,10 +27,10 @@ def Create_Robot():
     pyrosim.Send_Joint(name="Torso_BackLeg", parent="Torso", child="BackLeg", type="revolute", position="1.0 0.0 1.0")
     # The other BackLeg
     pyrosim.Send_Cube(name="BackLeg", pos=[-0.5, 0, -0.5], size=[length, width, height])
-
     # End
     pyrosim.End()
 
 
+# call the functions
 Create_World()
 Create_Robot()
