@@ -1,11 +1,9 @@
-import os.path
 import pybullet as p
 import time as t
 import pybullet_data
-import numpy
 import pyrosim.pyrosim as pyrosim
 import numpy
-import math
+
 
 physicsClient = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
@@ -28,6 +26,22 @@ pyrosim.Prepare_To_Simulate("body.urdf")
 backLegSensorValues = numpy.zeros(1000)
 frontLegSensorValues = numpy.zeros(1000)
 
+backLegAmplitude = numpy.pi/4
+backLegFrequency = 10
+backLegPhaseOffset = 0
+
+frontLegAmplitude = numpy.pi/6
+frontLegFrequency = 10
+frontLegPhaseOffset = numpy.pi/2.9
+
+# unique motor values for front leg and back leg
+backLegTargetAngles = backLegAmplitude * \
+                      numpy.sin(numpy.linspace(-backLegFrequency * numpy.pi + backLegPhaseOffset,
+                                               backLegFrequency * numpy.pi + backLegPhaseOffset, num=1000))
+frontLegTargetAngles = frontLegAmplitude * \
+                       numpy.sin(numpy.linspace(-frontLegFrequency*numpy.pi + frontLegPhaseOffset,
+                                                frontLegFrequency * numpy.pi+frontLegPhaseOffset, num=1000))
+
 # simulated world
 for i in range(1000):
     p.stepSimulation()
@@ -41,16 +55,16 @@ for i in range(1000):
         bodyIndex=robot,
         jointName="Torso_BackLeg",
         controlMode=p.POSITION_CONTROL,
-        targetPosition=-math.pi/4.0,
-        maxForce=500)
+        targetPosition=backLegTargetAngles[i],
+        maxForce=25)
 
     # add front leg motors
     pyrosim.Set_Motor_For_Joint(
         bodyIndex=robot,
         jointName="Torso_FrontLeg",
         controlMode=p.POSITION_CONTROL,
-        targetPosition=math.pi/6.0,
-        maxForce=500)
+        targetPosition=frontLegTargetAngles[i],
+        maxForce=25)
 
     t.sleep(1 / 60)
 

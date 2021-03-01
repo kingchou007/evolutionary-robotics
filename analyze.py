@@ -2,14 +2,11 @@ import matplotlib.pyplot
 import numpy
 import os.path
 
-# load back leg data
-backLegSensorValues = numpy.load(os.path.join('data', 'backLegSensorValues.npy'))
-# load front leg data
-frontLegSensorValues = numpy.load(os.path.join('data', 'frontLegSensorValues.npy'))
+# load target angles data
+targetAngles = numpy.load('data/targetAngles.npy')
 
 # Visualization
-matplotlib.pyplot.plot(backLegSensorValues, label='back leg', linewidth=5)
-matplotlib.pyplot.plot(frontLegSensorValues, label='front leg')
+targetAngles = numpy.load('data/targetAngles.npy')
 matplotlib.pyplot.title('Visualization')
 matplotlib.pyplot.legend()
 matplotlib.pyplot.show()
