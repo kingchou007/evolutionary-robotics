@@ -4,7 +4,8 @@ import time as t
 import pybullet_data
 import numpy
 import pyrosim.pyrosim as pyrosim
-
+import numpy
+import math
 
 physicsClient = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
@@ -35,16 +36,22 @@ for i in range(1000):
     # Adding a touch sensor to the front leg
     frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
 
-    # add motors
-    pyrosim.Set_Motor_For_Joint(bodyIndex=..., jointName="...", controlMode=..., targetPosition=..., maxForce=...)
+    # add back leg motors
+    pyrosim.Set_Motor_For_Joint(
+        bodyIndex=robot,
+        jointName="Torso_BackLeg",
+        controlMode=p.POSITION_CONTROL,
+        targetPosition=-math.pi/4.0,
+        maxForce=500)
+
+    # add front leg motors
+    pyrosim.Set_Motor_For_Joint(
+        bodyIndex=robot,
+        jointName="Torso_FrontLeg",
+        controlMode=p.POSITION_CONTROL,
+        targetPosition=math.pi/6.0,
+        maxForce=500)
 
     t.sleep(1 / 60)
 
 p.disconnect()
-
-# numpy.save(os.path.join('data', 'backLegSensorValues.npy'), backLegSensorValues)
-# numpy.save(os.path.join('data', 'frontLegSensorValues.npy'), frontLegSensorValues)
-
-# print the value of leg sensors
-# print(backLegSensorValues)
-# print(frontLegSensorValues)
