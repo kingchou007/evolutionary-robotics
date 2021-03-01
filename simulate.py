@@ -3,7 +3,7 @@ import pybullet as p
 import time as t
 import pybullet_data
 import numpy
-from pyrosim import pyrosim
+import pyrosim.pyrosim as pyrosim
 
 
 physicsClient = p.connect(p.GUI)
@@ -15,7 +15,7 @@ p.setGravity(0, 0, -9.8)
 # add floor
 planedId = p.loadURDF("plane.urdf")
 # the robot body data
-planedId = p.loadURDF("body.urdf")
+robot = p.loadURDF("body.urdf")
 
 # world
 p.loadSDF("world.sdf")
@@ -34,12 +34,17 @@ for i in range(1000):
     backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
     # Adding a touch sensor to the front leg
     frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
+
+    # add motors
+    pyrosim.Set_Motor_For_Joint(bodyIndex=..., jointName="...", controlMode=..., targetPosition=..., maxForce=...)
+
     t.sleep(1 / 60)
 
 p.disconnect()
 
-numpy.save(os.path.join('data', 'backLegSensorValues.npy'), backLegSensorValues)
-numpy.save(os.path.join('data', 'frontLegSensorValues.npy'), frontLegSensorValues)
+# numpy.save(os.path.join('data', 'backLegSensorValues.npy'), backLegSensorValues)
+# numpy.save(os.path.join('data', 'frontLegSensorValues.npy'), frontLegSensorValues)
 
-print(backLegSensorValues)
-print(frontLegSensorValues)
+# print the value of leg sensors
+# print(backLegSensorValues)
+# print(frontLegSensorValues)
