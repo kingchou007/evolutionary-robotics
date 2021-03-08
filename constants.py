@@ -9,7 +9,7 @@ frontLegAmplitude = numpy.pi/4
 frontLegFrequency = 5
 frontLegPhaseOffset = 0
 
-motorForce = 15  # what is this? 重力不同，运行情况就会不同
+motorForce = 15  # what is this? 重力不同，运行情况就会不同, 确定是否修改动力
 
 timeSteps = 1000
 gravity = -9.8
