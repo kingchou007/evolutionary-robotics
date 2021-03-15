@@ -15,7 +15,7 @@ def Create_World():
     pyrosim.End()
 
 
-def Create_Robot():
+def Generate_Body():
     pyrosim.Start_URDF("body.urdf")
     # Robot Torso
     pyrosim.Send_Cube(name="Torso", pos=[1.5, 0, 1.5], size=[length, width, height])
@@ -33,4 +33,6 @@ def Create_Robot():
 
 # call the functions
 Create_World()
-Create_Robot()
+Generate_Body()
+
+
