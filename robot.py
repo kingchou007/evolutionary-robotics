@@ -32,5 +32,7 @@ class ROBOT:
             self.motors[j].Set_Value(self.robot, time_step)
 
     def Think(self):
+        self.nn.Update()
         self.nn.Print()
+
 
