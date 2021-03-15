@@ -7,8 +7,8 @@ from pyrosim.neuralNetwork import NEURAL_NETWORK
 
 class ROBOT:
     def __init__(self):
-        self.motors = {}
-        self.sensors = {}
+        # self.motors = {}
+        # self.sensors = {}
         self.robot = p.loadURDF("body.urdf")
         pyrosim.Prepare_To_Simulate("body.urdf")
         self.Prepare_To_Sense()
@@ -16,6 +16,7 @@ class ROBOT:
         self.nn = NEURAL_NETWORK("brain.nndf")
 
     def Prepare_To_Sense(self):
+        self.sensors = {}
         for linkName in pyrosim.linkNamesToIndices:
             self.sensors[linkName] = SENSOR(linkName)
 
@@ -24,6 +25,7 @@ class ROBOT:
             self.sensors[i].Get_Value(time_step)
 
     def Prepare_To_Act(self):
+        self.motors = {}
         for jointName in pyrosim.jointNamesToIndices:
             self.motors[jointName] = MOTOR(jointName)
 
@@ -33,6 +35,8 @@ class ROBOT:
                 jointName = self.nn.Get_Motor_Neurons_Joint(neuronName)
                 desiredAngle = self.nn.Get_Value_Of(neuronName)
                 self.motors[jointName].Set_Value(self.robot, desiredAngle)
+                # print specific neuron data
+                print(neuronName + " " + jointName + " ", desiredAngle)
 
     def Think(self):
         self.nn.Update()

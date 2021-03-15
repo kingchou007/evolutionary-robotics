@@ -1,5 +1,7 @@
 from world import WORLD
 from robot import ROBOT
+from motor import MOTOR
+from sensor import SENSOR
 import constants as c
 import pybullet as p
 import time
