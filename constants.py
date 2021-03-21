@@ -13,4 +13,4 @@ motorForce = 15
 
 timeSteps = 1000
 gravity = -9.8
-sleepTime = 1.0/60.0
+sleepTime = 1.0/100.0
