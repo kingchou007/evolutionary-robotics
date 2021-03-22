@@ -1,6 +1,6 @@
-# CS206
+# robot
 
-Evolutionary Robotics
+[comment]: Evolutionary Robotics
 
 [comment]: <> (Module| Deliverable | Update_Date | )
 
