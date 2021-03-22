@@ -1,6 +1,5 @@
-# robot
+# my robot
 
-[comment]: <> Evolutionary Robotics
 
 [comment]: <> (Module| Deliverable | Update_Date | )
 
