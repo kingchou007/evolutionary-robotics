@@ -1,3 +1,4 @@
+import random
 import numpy as np
 import pyrosim.pyrosim as pyrosim
 import os
@@ -9,22 +10,26 @@ class SOLUTION:
         self.weights = np.random.rand(3, 2)
         self.weights = self.weights * 2 - 1
 
-    def Evolve(self):
+    def Evaluate(self, directOrGui):
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
-        os.system("python3 simulate.py")
+        # run
+        os.system("python3 simulate.py " + directOrGui)
+        # file
+        f = open("fitness.txt", "r")
+        self.fitness = float(f.read())
+        f.close()
+
+    def Mutate(self):
+        self.weights[random.randint(0, 2)][random.randint(0, 1)] = random.random() * 2 - 1
 
     def Create_World(self):
-        # box
         pyrosim.Start_SDF("world.sdf")
-        # the world
-        pyrosim.Start_SDF("boxes.sdf")
         pyrosim.Send_Cube(name="Box", pos=[-2, 2, 0.5], size=[1, 1, 1])
-        # End
         pyrosim.End()
 
-    def Generate_Body(self):
+    def Create_Body(self):
         pyrosim.Start_URDF("body.urdf")
         pyrosim.Send_Cube(name="Torso", pos=[1.5, 0, 1.5], size=[1, 1, 1])
         pyrosim.Send_Joint(name="Torso_FrontLeg", parent="Torso", child="FrontLeg", type="revolute",
@@ -33,10 +38,9 @@ class SOLUTION:
         pyrosim.Send_Joint(name="Torso_BackLeg", parent="Torso", child="BackLeg", type="revolute",
                            position="1.0 0.0 1.0")
         pyrosim.Send_Cube(name="BackLeg", pos=[-0.5, 0, -0.5], size=[1, 1, 1])
-
         pyrosim.End()
 
-    def Generate_Brain(self):
+    def Create_Brain(self):
         pyrosim.Start_NeuralNetwork("brain.nndf")
         pyrosim.Send_Sensor_Neuron(name=0, linkName="Torso")
         pyrosim.Send_Sensor_Neuron(name=1, linkName="BackLeg")
@@ -50,4 +54,3 @@ class SOLUTION:
                                      weight=self.weights[currentRow][currentColumn])
 
         pyrosim.End()
-
