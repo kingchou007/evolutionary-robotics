@@ -48,10 +48,18 @@ def Generate_Brain():
     # pyrosim.End()
 
     # random research
-    for sensor_neurons in range(0, 3):  # iterate over the names of the three sensor neurons.
-        for motor_neurons in range(4, 5):  # iterate over each of the two motor neurons
+    # for sensor_neurons in range(0, 3):  # iterate over the names of the three sensor neurons.
+    #     for motor_neurons in range(4, 5):  # iterate over each of the two motor neurons
+    #         pyrosim.Send_Synapse(sourceNeuronName=sensor_neurons, targetNeuronName=motor_neurons,
+    #                              weight=random.randrange(-1, 1))
+    # pyrosim.End()
+
+    for sensor_neurons in range(3):
+        for motor_neurons in range(2):
+            motor_neurons = motor_neurons + 3
             pyrosim.Send_Synapse(sourceNeuronName=sensor_neurons, targetNeuronName=motor_neurons,
-                                 weight=random.randrange(-1, 1))
+                                 weight=random.uniform(-1, 1))
+
     pyrosim.End()
 
 
