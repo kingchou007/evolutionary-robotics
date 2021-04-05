@@ -17,8 +17,9 @@ class SOLUTION:
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
+        strId = str(self.myId)
         # run
-        os.system("python3 simulate.py " + directOrGui + " " + str(self.myID))
+        os.system("python3 simulate.py " + directOrGui + " " + strId)
 
     def Wait_For_Simulation_To_End(self):
         fitnessFileName = "fitness" + str(self.myID) + ".txt"
@@ -26,13 +27,14 @@ class SOLUTION:
             time.sleep(0.01)
         f = open(fitnessFileName, "r")
         self.fitness = float(f.read())
+        print(self.fitness)
         os.system("rm " + fitnessFileName)
 
     def Mutate(self):
         self.weights[random.randint(0, 2)][random.randint(0, 1)] = random.random() * 2 - 1
 
     def Set_ID(self, newId):
-        self.myID = id
+        self.myID = newId
 
     def Create_World(self):
         pyrosim.Start_SDF("world.sdf")
