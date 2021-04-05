@@ -10,6 +10,7 @@ import time as t
 class SIMULATION:
     def __init__(self, directOrGui, solutionID):
         self.directOrGui = directOrGui
+        self.id = solutionID
 
         if directOrGui == "DIRECT":
 
@@ -29,7 +30,7 @@ class SIMULATION:
 
         for i in range(350):
             if self.directOrGui == 'GUI':
-                t.sleep(1/500)
+                t.sleep(1 / 500)
             p.stepSimulation()
 
             self.robot.Sense(i)
@@ -38,7 +39,7 @@ class SIMULATION:
 
     def Get_Fitness(self):
 
-        self.robot.Get_Fitness()
+        self.robot.Get_Fitness(self.id)
 
     def __del__(self):
 

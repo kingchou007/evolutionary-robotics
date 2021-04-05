@@ -11,7 +11,7 @@ frontLegPhaseOffset = 0
 
 motorForce = 15
 
-timeSteps = 1000
+timeSteps = 400
 gravity = -9.8
 sleepTime = 1.0/100.0
 

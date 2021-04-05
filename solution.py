@@ -2,6 +2,8 @@ import random
 import numpy as np
 import pyrosim.pyrosim as pyrosim
 import os
+import time
+
 
 class SOLUTION:
 
@@ -11,16 +13,20 @@ class SOLUTION:
         self.weights = np.random.rand(3, 2)
         self.weights = self.weights * 2 - 1
 
-    def Evaluate(self, directOrGui):
+    def Start_Simulation(self, directOrGui):
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
         # run
         os.system("python3 simulate.py " + directOrGui + " " + str(self.myID))
-        # file
-        f = open("fitness.txt", "r")
+
+    def Wait_For_Simulation_To_End(self):
+        fitnessFileName = "fitness" + str(self.myID) + ".txt"
+        while not os.path.exists(fitnessFileName):
+            time.sleep(0.01)
+        f = open(fitnessFileName, "r")
         self.fitness = float(f.read())
-        f.close()
+        os.system("rm " + fitnessFileName)
 
     def Mutate(self):
         self.weights[random.randint(0, 2)][random.randint(0, 1)] = random.random() * 2 - 1
