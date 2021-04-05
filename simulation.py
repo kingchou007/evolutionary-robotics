@@ -28,7 +28,7 @@ class SIMULATION:
 
     def Run(self):
 
-        for i in range(350):
+        for i in range(400):
             if self.directOrGui == 'GUI':
                 t.sleep(1 / 500)
             p.stepSimulation()

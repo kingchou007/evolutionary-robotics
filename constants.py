@@ -11,11 +11,11 @@ frontLegPhaseOffset = 0
 
 motorForce = 15
 
-timeSteps = 400
+timeSteps = 500
 gravity = -9.8
 sleepTime = 1.0/100.0
 
-numberOfGenerations = 2
+numberOfGenerations = 10
 
 # define population size
-populationSize = 2
+populationSize = 10
