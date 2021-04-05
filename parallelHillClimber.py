@@ -3,6 +3,7 @@ import constants as c
 import copy
 import os
 
+
 class PARALLEL_HILL_CLIMBER:
 
     def __init__(self):
@@ -16,6 +17,7 @@ class PARALLEL_HILL_CLIMBER:
             self.nextAvailableID = self.nextAvailableID + 1
 
     def Evolve(self):
+        self.Evaluate(self.parents)
         for currentGeneration in range(c.numberOfGenerations):
             self.Evolve_For_One_Generation()
 
@@ -28,8 +30,8 @@ class PARALLEL_HILL_CLIMBER:
     def Evolve_For_One_Generation(self):
         self.Spawn()
         self.Mutate()
-        self.child.Evaluate(self.children)
-        # self.Print()
+        self.Evaluate(self.children)
+        self.Print()
         # self.Select()
 
     def Spawn(self):
@@ -48,9 +50,8 @@ class PARALLEL_HILL_CLIMBER:
             self.parent = self.child
 
     def Print(self):
-        print("-------------------------------------------------------")
-        print("Parent: " + str(self.parent.fitness), " ", "Child: " + str(self.child.fitness))
-        print("-------------------------------------------------------")
+        for key in self.parents:
+            print("Parent: ", self.parents[key].fitness, " ", "Child: ", self.children[key].fitness)
 
     def Show_Best(self):
         # self.parent.Evaluate("GUI")

@@ -17,7 +17,7 @@ class SOLUTION:
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
-        strId = str(self.myId)
+        strId = str(self.myID)
         # run
         os.system("python3 simulate.py " + directOrGui + " " + strId)
 
@@ -27,7 +27,6 @@ class SOLUTION:
             time.sleep(0.01)
         f = open(fitnessFileName, "r")
         self.fitness = float(f.read())
-        print(self.fitness)
         os.system("rm " + fitnessFileName)
 
     def Mutate(self):

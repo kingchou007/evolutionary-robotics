@@ -15,7 +15,7 @@ timeSteps = 400
 gravity = -9.8
 sleepTime = 1.0/100.0
 
-numberOfGenerations = 10
+numberOfGenerations = 2
 
 # define population size
 populationSize = 2
