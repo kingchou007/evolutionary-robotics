@@ -8,7 +8,7 @@ import time as t
 
 
 class SIMULATION:
-    def __init__(self, directOrGui):
+    def __init__(self, directOrGui, solutionID):
         self.directOrGui = directOrGui
 
         if directOrGui == "DIRECT":
@@ -23,7 +23,7 @@ class SIMULATION:
         p.setGravity(0, 0, -9.8)
 
         self.world = WORLD()
-        self.robot = ROBOT()
+        self.robot = ROBOT(solutionID)
 
     def Run(self):
 
