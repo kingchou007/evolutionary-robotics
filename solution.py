@@ -5,7 +5,8 @@ import os
 
 class SOLUTION:
 
-    def __init__(self):
+    def __init__(self, id):
+        self.myID = id
         # a 3-row x 2-column matrix of random values
         self.weights = np.random.rand(3, 2)
         self.weights = self.weights * 2 - 1
@@ -23,6 +24,9 @@ class SOLUTION:
 
     def Mutate(self):
         self.weights[random.randint(0, 2)][random.randint(0, 1)] = random.random() * 2 - 1
+
+    def Set_ID(self, newId):
+        self.myID = id
 
     def Create_World(self):
         pyrosim.Start_SDF("world.sdf")
