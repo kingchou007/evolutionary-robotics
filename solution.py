@@ -64,3 +64,6 @@ class SOLUTION:
                                      weight=self.weights[currentRow][currentColumn])
 
         pyrosim.End()
+
+        while not os.path.exists("brain" + str(self.myID) + ".nndf"):
+            time.sleep(0.01)
