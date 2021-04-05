@@ -16,3 +16,6 @@ gravity = -9.8
 sleepTime = 1.0/100.0
 
 numberOfGenerations = 10
+
+# define population size
+populationSize = 2
