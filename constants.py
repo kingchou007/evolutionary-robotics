@@ -15,7 +15,13 @@ timeSteps = 500
 gravity = -9.8
 sleepTime = 1.0/100.0
 
-numberOfGenerations = 10
+numberOfGenerations = 1
 
 # define population size
 populationSize = 10
+
+# number of motors
+numMotorNeurons = 2
+
+# number of sensors
+numSensorNeurons = 3
