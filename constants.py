@@ -11,9 +11,9 @@ frontLegPhaseOffset = 0
 
 motorForce = 15
 
-timeSteps = 500
+timeSteps = 1000
 gravity = -9.8
-sleepTime = 1.0/100.0
+sleepTime = 1.0/400.0
 
 numberOfGenerations = 1
 
@@ -21,7 +21,8 @@ numberOfGenerations = 1
 populationSize = 10
 
 # number of motors
-numMotorNeurons = 2
+numMotorNeurons = 4
 
 # number of sensors
 numSensorNeurons = 3
+
