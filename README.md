@@ -1,6 +1,5 @@
-# CS206
+# my robot
 
-Evolutionary Robotics
 
 [comment]: <> (Module| Deliverable | Update_Date | )
 
