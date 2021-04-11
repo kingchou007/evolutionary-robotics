@@ -6,23 +6,26 @@ backLegPhaseOffset = 0
 
 # front leg
 frontLegAmplitude = numpy.pi/4
-frontLegFrequency = 5
+frontLegFrequency = 10
 frontLegPhaseOffset = 0
 
-motorForce = 15
+motorForce = 55
 
 timeSteps = 1000
 gravity = -9.8
-sleepTime = 1.0/400.0
+sleepTime = 1.0/300.0
 
-numberOfGenerations = 1
+numberOfGenerations = 20
 
 # define population size
-populationSize = 10
+populationSize = 20
 
 # number of motors
-numMotorNeurons = 5
+numMotorNeurons = 4
 
 # number of sensors
-numSensorNeurons = 4
+numSensorNeurons = 8
+
+motorJointRange = 0.27
+
 
