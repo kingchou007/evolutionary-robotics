@@ -42,13 +42,15 @@ class ROBOT:
 
     def Think(self):
         self.nn.Update()
-        # self.nn.Print()
+        self.nn.Print()
 
     def Get_Fitness(self, solutionID):
         basePositionAndOrientation = p.getBasePositionAndOrientation(self.robot)
         basePosition = basePositionAndOrientation[0]
         xPosition = basePosition[0]
+        zPosition = basePosition[2]
         print(xPosition)
+        print(zPosition)
 
         # file
         file = "tmp" + str(solutionID) + ".txt"

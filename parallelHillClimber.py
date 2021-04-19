@@ -47,7 +47,7 @@ class PARALLEL_HILL_CLIMBER:
 
     def Select(self):
         for key in self.parents:
-            if self.children[key].fitness > self.parents[key].fitness:  # change < to > in PHC's Select() method - Up
+            if self.children[key].fitness < self.parents[key].fitness:  # change < to > in PHC's Select() method - Up
                 self.parents[key] = self.children[key]
 
     def Print(self):
@@ -55,14 +55,19 @@ class PARALLEL_HILL_CLIMBER:
             print("Parent: ", self.parents[key].fitness, " ", "Child: ", self.children[key].fitness)
 
     def Show_Best(self):
-        minFitness = self.parents[0].fitness
-        bestFitness = -1000.0  # change 1000.0 to -1000.0
+        # minFitness = self.parents[0].fitness
+        # bestFitness = -1000.0  # change 1000.0 to -1000.0
+        # for key in self.parents:
+        #     if self.parents[key].fitness < minFitness:
+        #         minFitness = self.parents[key].fitness
+        #         bestFitness = key
+        bestFitness = -10000.0
         for key in self.parents:
-            if self.parents[key].fitness < minFitness:
-                minFitness = self.parents[key].fitness
-                bestFitness = key
+            if self.parents[key].fitness > bestFitness:
+                bestKey = key
+                bestFitness = self.parents[key].fitness
 
-        self.parents[bestFitness].Start_Simulation("GUI")
+        self.parents[bestKey].Start_Simulation("GUI")
 
 
 
