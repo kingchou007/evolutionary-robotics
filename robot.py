@@ -45,15 +45,16 @@ class ROBOT:
         # self.nn.Print()
 
     def Get_Fitness(self, solutionID):
-        stateOfLinkZero = p.getLinkState(self.robot, 0)
-        positionOfLinkZero = stateOfLinkZero[0]
-        xCoordinateOfLinkZero = positionOfLinkZero[0]
-        print(xCoordinateOfLinkZero)
+        basePositionAndOrientation = p.getBasePositionAndOrientation(self.robot)
+        basePosition = basePositionAndOrientation[0]
+        xPosition = basePosition[0]
+        print(xPosition)
 
         # file
         file = "tmp" + str(solutionID) + ".txt"
         f = open(file, "w")
         # f = open("fitness.txt", "w")
-        f.write(str(xCoordinateOfLinkZero))
+        # f.write(str(xCoordinateOfLinkZero))
+        f.write(str(xPosition))
         f.close()
         os.system("mv " + file + " " + "fitness" + str(solutionID) + ".txt")
