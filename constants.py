@@ -9,7 +9,7 @@ frontLegAmplitude = -numpy.pi/4
 frontLegFrequency = 10
 frontLegPhaseOffset = 0
 
-motorForce = 55
+motorForce = 25
 
 timeSteps = 1000
 gravity = -9.8
@@ -26,4 +26,4 @@ numMotorNeurons = 4
 # number of sensors
 numSensorNeurons = 8
 
-motorJointRange = 0.87
+motorJointRange = 1
