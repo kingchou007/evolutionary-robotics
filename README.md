@@ -1,9 +1,9 @@
 # my robot
 
-project
+Project Link:
 https://www.reddit.com/r/ludobots/
 
-my posts
+My posts:
 https://www.reddit.com/user/jli45_Kane/posts/
 
 
